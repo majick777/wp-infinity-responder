@@ -1,0 +1,14 @@
+s.php:
+
+$r or $r_ID = responder ID
+$a or $action = action: resend_unsub_conf, resend_sub_conf, sub/subscribe/s, 
+$cf_ = custom field, for example $cf_comment
+$s = silent mode: 1 = on, 0 = off
+$e = email address
+$c = confirm string
+$sub_ID = subscriber ID
+$h = handle HTML
+$ref = referral source
+$n = full name
+$f = first name
+$l = last name

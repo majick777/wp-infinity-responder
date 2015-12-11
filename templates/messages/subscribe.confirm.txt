@@ -1,0 +1,17 @@
+<SUBJ>[Confirmation Required] Please confirm your email.</SUBJ>
+<MSG>Hello!
+Thank you for subscribing..
+
+Please add %resp_replyto% to your spam filter whitelist in order to 
+ensure you receive all messages.
+
+If you did not subscribe, just ignore this email. Otherwise you will 
+need to confirm your subscription by clicking here:
+%sub_conf_url%
+
+If your email software cannot handle hyperlinks then you will need
+to copy and paste the following into your browser:
+%sub_conf_url%
+
+Sincerely,
+%resp_ownername% (%resp_owneremail%)</MSG>

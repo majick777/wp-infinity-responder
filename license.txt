@@ -1,0 +1,33 @@
+License and copyright:
+
+WP Infinity Reponder is copyright 2013 by DreamJester Productions.
+Inifinity Responder is copyright 2009 by Infinity Responder
+development team.
+Built upon Infinite Responder, which is copyright Aaron Colman
+and Adaptive Business Design from February 27, 2004.
+
+This software is released under the GPL, provided as gpl.txt.
+
+The latest version of WP Infinity Responder is available at
+http://dreamjester.net/free-plugins/infinity-responder/
+
+The latest version of Infinity Responder (standalone) is available at
+http://www.infinityresponder.org
+
+The original Infinite Responder software can be found at:
+http://infinite.ibasics.biz
+As creator of the original software only Aaron Colman can grant
+you the right to distribute the original Infinite Responder software
+under other licensing terms than the GPL. This derivative work, 
+Infinity Responder, is only available under the terms of the GPL.
+
+No warranty of any kind is implied or expressed. You're also
+liable for your own actions with this script. If something 
+goes wrong, it's your fault and you get to deal with the 
+consequences.
+
+Some plugins (namely tinyMCE) operate under a different license.
+TinyMCE, written by Moxiecode at http://tinymce.moxiecode.com/
+is an open source LGPL html editor. It's seperately licensed 
+and any changes you make specifically to it may require 
+something different.

@@ -1,0 +1,161 @@
+
+I really like the programming behind Infinity Responder, plus it just works!
+It still stands up against some pretty great autoresponder software and it's free.
+So I've adapted it and ported it to be a Wordpress plugin. :-)
+
+ALL FUTURE CHANGES FROM 1.3.0 TO BE RECORDED IN readme.txt
+
+
+----------------------------------------------------------
+Infinity Responder to WP Infinity Responder Port Changelog
+----------------------------------------------------------
+
+General Bugfixes and Updates for Infinity Responder 0.9b
+--------------------------------------------------------
+
+Added some new responder dashboard images (settings.gif, users.gif and form_gen.gif)
+Changed the trash_del.gif image to fit better with other images.
+
+Referral Source and IP Bugfix
+Insert after Line 238 of sendmails.php
+	$DB_ReferralSource  = $this_subscriber['ReferralSource'];
+	$DB_IPaddy          = $this_subscriber['IP_Addy'];
+	
+File: admin.php Found and commented out
+	include('templates/resplist_top.admin.php');
+
+Why send out a subscription confirmation every time when you can say this in your first
+autoresponder message..? (Note: This could be a future optional per responder setting.)
+Commented out Lines 216 and 502 of s.php 
+ SendMessageTemplate('templates/subscribe.complete.txt');
+
+Added option to send confirmation email for Add Subscribers and Bulk Add pages.
+Added option to import first name, last name, subscriber IP and referral source in Bulk Add.
+
+
+Start Wordpress Integration
+---------------------------
+
+MOD File: config.php to use wp-config.php values
+
+MOD File: get_config_vars.php to set plugin directories and removed username/password
+
+MAJOR MODIFICATION: added WP database prefix to all table calls program-wide.
+
+MAJOR MODIFICATION: All Submit Buttons point to WP included subpages
+
+* MOD WP Menu Subpages now call an include of PHP menu files:
+admin -> admin.php
+blacklists -> blacklists.php
+responders -> responders.php
+editconfig -> edit_config.php
+tools -> tools.php
+bouncers -> bouncers.php
+regexps -> regexps.php
+
+* MOD Change to Wordpress querystring call for s.php (subscriber processor) in...
+functions.php, list.php, sendmails.php, subhandler.php
+
+* Added "Send Verification Email" Option for Subscriber Add and Import
+
+* Removed calls to tinyMCE.php and popup_js.php (for now)
+
+* Installed and added option for latest version of tinyMCE (v4.0.1 as of writing)
+* MOD Files tinyMCE.php, tinyMCE_full.php, tinyMCE_simple.php
+
+* Installed and added Options for NicEdit and TinyEditor
+...since the latest tinyMCE has no source editor any more?! :_(
+* htmleditors.php now loaded instead of tinyMCE.php
+
+* Deleted old menu Images (no longer needed)
+
+* Added unconfirmed subscriber count and message count on responder screen
+
+* Added Test Message Sequence Form and Functions to messages.php
+with new Template file: /templates/test_msg.sequence.php
+* Added "Test Message Sequence" button to Messages screen
+
+* MAJOR MOD to functions.php GetSubcriberInfo, GetMessageInfo, GetResponderInfo
+to now return an array of values to help bypass some global call screwiness
+and to calls to these functions in all files, to help with same!
+
+* MAJOR MOD to send multipart HTML/Text emails via wp_mail (phpmailer)
+with inline image embedding conversion and phpmailer wordwrap settings.
+Desired mailer can now be chosen from config page.
+
+* Added Cron Job Menu Page with Setup Explanation from Manual
+to new file /cron.php
+* Added WP Cron Option for scheduling sendmails
+
+* Added Missing Subscriber List Export Functions
+* Added Export button to Control Panel
+
+* Added Infinity Responder Subscriber Widget
+
+* Updated logic for Optin/Optin Redirect/Message handling in s.php
+
+* Moved .txt message files from /templates/ to /templates/messages/
+* Moved .subhandler files from /templates/ to /templates/subhandlers/
+
+* Added Subscription Management Shortcode [ir-subscriptions]
+
+* Added Integration Module for Customer List Subscriptions
+
+* Modified message notification function to look for Responder specific
+messages in message template directory or stylesheet message directory
+eg. for Responder ID 1 the priority sequence to look for templates is:
+/wp-content/themes/current-theme/templates/messages/subscribe.complete.1.txt
+/wp-content/themes/current-theme/templates/messages/subscribe.complete.txt
+/wp-content/plugins/wp-infinity-responder/templates/messages/subscriber.complete.1.txt
+/wp-content/plugins/wp-infinity-responder/templates/messages/subscriber.complete.txt
+
+* 1.6.0 Modified the above to account for HTML templates also! eg.
+/wp-content/themes/current-theme/templates/infinity-responder/subscribe.complete.1.html
+/wp-content/themes/current-theme/irmessages/subscribe.complete.1.html
+/wp-content/plugins/wp-infinity-responder/templates/messages/subscriber.complete.1.html
+/wp-content/themes/current-theme/templates/infinity-responder/subscribe.complete.html
+/wp-content/themes/current-theme/irmessages/subscribe.complete.html
+/wp-content/plugins/wp-infinity-responder/templates/messages/subscriber.complete.html
+
+
+Template Modifications for Wordpress Version
+--------------------------------------------
+MAJOR MODIFICATIONS: details too numerous to list sorry..!
+* MAJOR MOD all submit buttons now ported through Wordpress
+* MAJOR MOD Reformatted all table widths to fit sidebar
+* MAJOR MOD Reformatted table row structures for all lists
+* MAJOR MOD Changed all template headers to match header colour
+
+* MOD All Submit buttons now of WP class "primary-button" or "secondary-button"
+* MOD All Navigational submit buttons use GET request buttons instead of POST
+* MOD Change to Wordpress querystring call for s.php in all template files
+* MOD edit.config.php now includes new editor / wp_mail / phpmailer options
+* Added new templates: list_export.admin.php and list_export_output.admin.php
+* Updated Form Generator Styles in form_gen.admin.php
+
+(ALL FUTURE CHANGES FROM 1.3.0 NOW NOTED IN readme.txt)
+
+
+Infinity Responder Test Sequence
+--------------------------------
+Edit Config
+Add New Responder(s)
+Edit Responder
+Delete a Responder
+Add Subscribers to Responder
+Delete Subscribers from Responder
+Bulk Add Subscribers to Responder
+Import File of Subscribers to Responder
+Add Mailburst to Subscribers
+Edit Mailburst to Subscribers
+Run Sendmails for Mailburst
+Add New Message(s) to Responder
+Delete a Message
+Edit Message
+Test Mailing Sequence
+Reset Sent Messages for Subscribers
+Test Subscriber Form
+Test Subscriber Confirmation
+Test Cron Job Mailing
+
+* Test Bouncers and POP3 * (untested)
