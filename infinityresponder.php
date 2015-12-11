@@ -8,6 +8,8 @@ Author: Tony Hayes
 Author URI: http://pluginreview.net
 */
 
+// test comment
+
 if (!function_exists('add_action')) {exit;}
 
 $virversion = "1.6.0";
